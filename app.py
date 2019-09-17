@@ -5,21 +5,18 @@ import plotly.graph_objs as go
 
 ########### Define your variables ######
 
-myheading = "Baseball Stats from the 1950s"
-mytitle = "Batting Averages for 3 Hall of Famers"
-x_values = ['1954', '1955', '1956', '1957', '1958', '1959']
-y1_values = [345, 356, 345, 388, 328, 254]
-y2_values = [300, 306, 353, 365, 304, 285]
-y3_values = [280, 314, 328, 322, 326, 355]
-color1 = '#fc9403'
-color2 = '#0307fc'
-color3 = '#9003fc'
-name1 = 'Ted Williams'
-name2 = 'Mickey Mantle'
-name3 = 'Hank Aaron'
-tabtitle = 'baseball'
-sourceurl = 'https://www.baseball-reference.com'
-githublink = 'https://github.com/austinlasseter/dash-linechart-example'
+myheading = "Football Stats from 2019"
+mytitle = "New England Patriots - Points Scored and Points Allowed"
+x_values = ['Week 1', 'Week 2]
+y1_values = [33, 43]
+y2_values = [3, 0]
+color1 = '#1a237e'
+color2 = '#263238'
+name1 = 'Points Scored'
+name2 = 'Points Against'
+tabtitle = 'football'
+sourceurl = 'https://www.pro-football-reference.com/'
+githublink = 'https://github.com/aidanjdm/dash-linechart-example'
 
 ########### Set up the chart
 
@@ -38,16 +35,9 @@ trace1 = go.Scatter(
     marker = {'color': color2},
     name = name2
 )
-trace2 = go.Scatter(
-    x = x_values,
-    y = y3_values,
-    mode = 'lines',
-    marker = {'color': color3},
-    name = name3
-)
 
 # assign traces to data
-data = [trace0, trace1, trace2]
+data = [trace0, trace1]
 layout = go.Layout(
     title = mytitle
 )
