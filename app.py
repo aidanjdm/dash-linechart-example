@@ -7,7 +7,7 @@ import plotly.graph_objs as go
 
 myheading = "Football Stats from 2019"
 mytitle = "New England Patriots - Points Scored and Points Allowed"
-x_values = ['Week 1', 'Week 2]
+x_values = ['Week 1', 'Week 2']
 y1_values = [33, 43]
 y2_values = [3, 0]
 color1 = '#1a237e'
