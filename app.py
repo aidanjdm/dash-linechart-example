@@ -5,41 +5,30 @@ import plotly.graph_objs as go
 
 ########### Define your variables ######
 
-myheading = "Football Stats from 2019"
-mytitle = "New England Patriots - Points Scored and Points Allowed"
-x_values = ['Week 1', 'Week 2']
-y1_values = [33, 43]
-y2_values = [3, 0]
-color1 = '#1a237e'
-color2 = '#263238'
-name1 = 'Points Scored'
-name2 = 'Points Against'
-tabtitle = 'football'
-sourceurl = 'https://www.pro-football-reference.com/'
-githublink = 'https://github.com/aidanjdm/dash-linechart-example'
+heading = "Graph Viewer"
+title = "Enter an expression to view its graph"
+x_values = list(range(-10,11))
+y_values = [x**2 for x in x_values]
+color = '#1a237e'
+name = 'f(x)'
+tabtitle = 'Graph Viewer'
+githublink = 'https://github.com/aidanjdm/midcourse-project'
 
 ########### Set up the chart
 
-# create traces
-trace0 = go.Scatter(
+# create trace
+trace = go.Scatter(
     x = x_values,
-    y = y1_values,
+    y = y_values,
     mode = 'lines',
-    marker = {'color': color1},
-    name = name1
-)
-trace1 = go.Scatter(
-    x = x_values,
-    y = y2_values,
-    mode = 'lines',
-    marker = {'color': color2},
-    name = name2
+    marker = {'color': color},
+    name = name
 )
 
 # assign traces to data
-data = [trace0, trace1]
+data = trace
 layout = go.Layout(
-    title = mytitle
+    title = title
 )
 
 # Generate the figure dictionary
@@ -53,14 +42,12 @@ app.title=tabtitle
 
 ########### Set up the layout
 app.layout = html.Div(children=[
-    html.H1(myheading),
+    html.H1(heading),
     dcc.Graph(
         id='figure-1',
         figure=fig
     ),
     html.A('Code on Github', href=githublink),
-    html.Br(),
-    html.A("Data Source", href=sourceurl),
     ]
 )
 
