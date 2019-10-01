@@ -14,7 +14,7 @@ name = 'f(x)'
 tabtitle = 'Graph Viewer'
 githublink = 'https://github.com/aidanjdm/midcourse-project'
 
-# Create traces
+# Create trace
 trace = go.Scatter(
     x = x_values,
     y = [(1*x**2 + 0) for x in x_values],
@@ -77,6 +77,13 @@ app.layout = html.Div(children=[
      Input(component_id='input-3', component_property='value')]
 )
 def update_graph(input_value1, input_value2, input_value3):
+    # define x_values to avoid undefined or imaginary outputs:
+    if input_value2 >= 0 and type(input_value2) == int:
+        x_values = [n*0.5 for n in range(-20, 21)]
+    else:
+        x_values = [n*0.5 for n in range(1, 21)]
+
+    # create trace
     trace = go.Scatter(
         x = x_values,
         y = [(input_value1*(x**(input_value2)) + input_value3) for x in x_values],
