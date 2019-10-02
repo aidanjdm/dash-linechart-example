@@ -8,7 +8,7 @@ from dash.dependencies import Input, Output, State
 
 heading = "Graph Viewer"
 title = "Enter parameters above to view the expression's graph below:"
-x_values = [n*0.5 for n in range(-20, 21)]
+x_values = [n*0.1 for n in range(-100, 101)]
 color = '#1a237e'
 name = 'f(x)'
 tabtitle = 'Graph Viewer'
@@ -78,10 +78,15 @@ app.layout = html.Div(children=[
 )
 def update_graph(input_value1, input_value2, input_value3):
     # define x_values to avoid undefined or imaginary outputs:
-    if input_value2 >= 0 and type(input_value2) == int:
-        x_values = [n*0.5 for n in range(-20, 21)]
+    if input_value2 < 0 and type(input_value2) != int:
+        x_values = [n*0.1 for n in range(1, 101)]
+    elif input_value2 >= 0 and type(input_value2) != int:
+        x_values = [n*0.1 for n in range(0, 101)]
+    elif input_value2 < 0 and type(input_value2) == int:
+        x_values = [n*0.1 for n in range(-100, 101)]
+        x_values.pop(100)
     else:
-        x_values = [n*0.5 for n in range(1, 21)]
+        x_values = [n*0.1 for n in range(-100, 101)]
 
     # create trace
     trace = go.Scatter(
